@@ -233,34 +233,41 @@ This project demonstrates practical experience with:
 
 ## Project Architecture
 
-```text
-Frontend
-HTML + JavaScript + Tailwind CSS + Chart.js
-              │
-              │ HTTP / JSON
-              ▼
-Backend
-FastAPI + Uvicorn
-              │
-              ▼
-Data Processing
-Pandas
-              │
-              ▼
-NLP Engine
-Hugging Face Transformers
-              │
-              ▼
-RoBERTa Sentiment Model
-              │
-              ▼
-Rule-Based Refinement
-              │
-              ▼
-Analytics & Results
-              │
-              ▼
-Interactive Dashboard
+The application follows a layered architecture that connects the frontend dashboard with the FastAPI backend, data-processing pipeline, NLP model, and analytics layer.
+
+```mermaid
+flowchart TD
+    A["📄 CSV / JSON File"] --> B["🌐 Frontend Dashboard"]
+    B --> C["⚡ FastAPI Backend"]
+
+    C --> D["🐼 Pandas<br/>Data Processing"]
+    D --> E["🧹 Text Cleaning<br/>& Extraction"]
+
+    E --> F["🤖 RoBERTa<br/>Sentiment Model"]
+    F --> G["📊 Sentiment Scores<br/>Positive / Neutral / Negative"]
+
+    G --> H["🧠 Rule-Based<br/>Refinement"]
+
+    H --> I["🎯 Final Classification<br/>+ Confidence"]
+
+    I --> J["📈 Analytics &<br/>Summary Generation"]
+
+    J --> B
+```
+
+### Architecture Layers
+
+| Layer               | Technology                               | Responsibility                                                    |
+| ------------------- | ---------------------------------------- | ----------------------------------------------------------------- |
+| **Frontend**        | HTML, JavaScript, Tailwind CSS, Chart.js | File upload, visualization, and displaying results                |
+| **API**             | FastAPI, Uvicorn                         | Handles requests, file uploads, and analysis responses            |
+| **Data Processing** | Pandas                                   | Loads, cleans, and prepares comment data                          |
+| **NLP Engine**      | Hugging Face Transformers, PyTorch       | Runs the pretrained RoBERTa sentiment model                       |
+| **Refinement**      | Python rule-based logic                  | Handles specific short, factual, and negated expressions          |
+| **Analytics**       | Python                                   | Calculates sentiment counts, percentages, examples, and summaries |
+| **Output**          | JSON + Dashboard                         | Returns structured results and visual insights                    |
+
+```
 ```
 
 ## Purpose
