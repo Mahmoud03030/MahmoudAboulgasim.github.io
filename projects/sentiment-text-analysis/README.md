@@ -30,38 +30,53 @@ The project combines **Natural Language Processing, machine learning inference, 
 
 ## How It Works
 
-The application follows a multi-stage processing pipeline:
+The application transforms raw comments into actionable sentiment insights through a multi-stage NLP pipeline.
 
-```text
-CSV / JSON Upload
-       │
-       ▼
-FastAPI File Upload
-       │
-       ▼
-Pandas Data Processing
-       │
-       ▼
-Text Cleaning & Extraction
-       │
-       ▼
-RoBERTa Sentiment Model
-       │
-       ▼
-Positive / Neutral / Negative Scores
-       │
-       ▼
-Rule-Based Refinement
-       │
-       ▼
-Sentiment + Confidence
-       │
-       ▼
-Aggregated Insights
-       │
-       ▼
-Interactive Dashboard
+```mermaid
+flowchart LR
+    A["📄<br/>CSV / JSON<br/>Upload"]
+    B["⚡<br/>FastAPI<br/>Backend"]
+    C["🐼<br/>Pandas<br/>Processing"]
+    D["🧹<br/>Text Cleaning<br/>& Extraction"]
+    E["🤖<br/>RoBERTa<br/>Sentiment Analysis"]
+    F["🧠<br/>Rule-Based<br/>Refinement"]
+    G["🎯<br/>Final Sentiment<br/>+ Confidence"]
+    H["📊<br/>Insights &<br/>Statistics"]
+    I["🌐<br/>Interactive<br/>Dashboard"]
+
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    E --> F
+    F --> G
+    G --> H
+    H --> I
 ```
+
+### Processing Pipeline
+
+**1. Upload**
+Users provide a CSV or JSON file containing comments or reviews.
+
+**2. Data Processing**
+The FastAPI backend receives the file and uses Pandas to extract, clean, and prepare the text data.
+
+**3. Sentiment Analysis**
+Each comment is processed by the pretrained **Twitter-RoBERTa** sentiment model to obtain Positive, Neutral, and Negative probability scores.
+
+**4. Rule-Based Refinement**
+Additional Python rules refine specific edge cases, including short expressions, factual/status-style comments, and negated phrases such as `"not bad"`.
+
+**5. Result Generation**
+The system produces a final sentiment classification together with its confidence score and class probabilities.
+
+**6. Analytics**
+The results are aggregated into sentiment counts, percentages, representative examples, and an overall insight summary.
+
+**7. Visualization**
+The processed results are returned to the frontend and presented through an interactive dashboard with charts, summary cards, and detailed comment-level results.
+
 
 ### 1. File Upload
 
@@ -267,8 +282,6 @@ flowchart TD
 | **Analytics**       | Python                                   | Calculates sentiment counts, percentages, examples, and summaries |
 | **Output**          | JSON + Dashboard                         | Returns structured results and visual insights                    |
 
-```
-```
 ## Purpose
 
 The project demonstrates how modern NLP models can be integrated into a practical application to transform unstructured text into structured sentiment insights.
