@@ -269,7 +269,6 @@ flowchart TD
 
 ```
 ```
-
 ## Purpose
 
 The project demonstrates how modern NLP models can be integrated into a practical application to transform unstructured text into structured sentiment insights.
