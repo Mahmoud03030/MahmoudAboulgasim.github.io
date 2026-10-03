@@ -104,6 +104,7 @@ Key contributions included:
 * Microsoft Power Automate
 * Microsoft Power BI
 * Microsoft SharePoint
+* n8n
 
 ### Data Visualization
 
